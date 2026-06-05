@@ -61,7 +61,7 @@ body {
 }
 
 .main-title {
-  font-size: 38px;
+  font-size: 42px;
   font-weight: 800;
   letter-spacing: 0.06em;
   margin: 0 0 12px 0;
@@ -154,12 +154,12 @@ h2 {
 }
 
 .emoji-img-3d {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.12));
-  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.265, 1.55);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.14));
+  transition: transform 0.5s cubic-bezier(0.68, -0.6, 0.265, 1.55), filter 0.3s ease;
 }
 
 .mood-text {
@@ -169,8 +169,8 @@ h2 {
 }
 
 .option-btn:hover .emoji-img-3d {
-  transform: scale(1.28) translateY(-3px) rotate(-2deg);
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.15));
+  transform: scale(1.32) translateY(-4px) rotate(-3deg);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.18));
 }
 
 .option-btn:active {
@@ -368,25 +368,21 @@ h2 {
 
 .center { text-align: center; }
 
-
-/* ==========================================================================
-   FIXED SMARTPHONE SCROLL OVERRIDES (REMOVES FIXED VIEWS CLIPPING)
-   ========================================================================== */
 @media (max-width: 600px) {
   body, html {
-    overflow-y: auto !important; /* FIXED: Allows smartphone browser to naturally scroll standard pages */
+    overflow-y: auto !important;
     height: auto;
     min-height: 100vh;
   }
 
   .responsive-wrapper {
-    padding: 16px 12px; /* Smooth padding boundaries on mobile edges */
+    padding: 16px 12px;
     height: auto;
   }
 
   .app-card {
     border: 1px solid var(--panel-border);
-    border-radius: 24px; /* Maintain clean card look on mobile instead of raw screen stretch */
+    border-radius: 24px;
     height: auto;
     box-shadow: var(--card-shadow);
   }
@@ -400,7 +396,7 @@ h2 {
   }
 
   .app-content {
-    padding: 24px 20px; /* Standard internal cell padding */
+    padding: 24px 20px;
   }
 
   .input-row-group {
@@ -408,7 +404,6 @@ h2 {
     gap: 14px;
   }
 
-  /* FIXED: Action button bar stays relative within content so it scrolls naturally with fields */
   .action-bar {
     position: relative !important;
     padding: 0;
