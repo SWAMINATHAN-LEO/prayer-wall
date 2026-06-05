@@ -32,7 +32,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Base Flexible Layout Container (Scales on all form factors) */
 .responsive-wrapper {
   width: 100%;
   max-width: 650px;
@@ -116,7 +115,6 @@ h2 {
   margin: 0 0 24px 0;
 }
 
-/* Multi-Slide Switching States */
 .slide {
   display: none !important;
 }
@@ -126,14 +124,12 @@ h2 {
   flex-direction: column;
 }
 
-/* Grid Custom Adjustments */
 .mood-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
 }
 
-/* Funny & Interactive 3D Options */
 .option-btn {
   width: 100%;
   padding: 16px 24px;
@@ -181,7 +177,6 @@ h2 {
   transform: translateY(-1px);
 }
 
-/* Modern Forms & Clean Dual-Column Inputs on Wide Desktop Screen viewspaces */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -253,7 +248,6 @@ h2 {
   color: var(--text-muted);
 }
 
-/* Unified Layout Navigation Buttons Structure */
 .action-bar {
   margin-top: 24px;
   width: 100%;
@@ -310,12 +304,11 @@ h2 {
   background: #e2e8f0;
 }
 
-/* Success Card Visuals */
 .success-card {
   border: 2px solid rgba(5, 150, 105, 0.15);
   background: linear-gradient(180deg, #ffffff 0%, #fafffa 100%);
   border-radius: 20px;
-  padding: 12px 10px;
+  padding: 24px 20px;
 }
 
 .success-icon-container {
@@ -377,65 +370,51 @@ h2 {
 
 
 /* ==========================================================================
-   DYNAMIC MOBILE DEVICE OVERRIDES (TRIGGERS WHEN VIEWSPACE IS UNDER 600PX)
+   FIXED SMARTPHONE SCROLL OVERRIDES (REMOVES FIXED VIEWS CLIPPING)
    ========================================================================== */
 @media (max-width: 600px) {
   body, html {
-    overflow: hidden; /* Lock viewport scrolling like a native app shell */
-    height: 100%;
+    overflow-y: auto !important; /* FIXED: Allows smartphone browser to naturally scroll standard pages */
+    height: auto;
+    min-height: 100vh;
   }
 
   .responsive-wrapper {
-    padding: 0;
-    height: 100%;
+    padding: 16px 12px; /* Smooth padding boundaries on mobile edges */
+    height: auto;
   }
 
   .app-card {
-    border: none;
-    border-radius: 0;
-    height: 100%;
-    box-shadow: none;
+    border: 1px solid var(--panel-border);
+    border-radius: 24px; /* Maintain clean card look on mobile instead of raw screen stretch */
+    height: auto;
+    box-shadow: var(--card-shadow);
   }
 
   .app-header {
-    padding: 20px 24px 16px 24px;
+    padding: 24px 20px 16px 20px;
   }
 
   .main-title {
-    font-size: 28px;
-  }
-
-  .bible-verse {
-    font-size: 14px;
+    font-size: 32px;
   }
 
   .app-content {
-    padding: 20px 24px 90px 24px; /* Space out internal content box to stay safe from the sticky navigation bar overlay */
+    padding: 24px 20px; /* Standard internal cell padding */
   }
 
-  /* Make inputs drop to stacked single-columns on smartphone screens */
   .input-row-group {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  /* Locks action bar into a native smartphone sticky bottom layout sheet */
+  /* FIXED: Action button bar stays relative within content so it scrolls naturally with fields */
   .action-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px 24px;
-    background: linear-gradient(360deg, #ffffff 85%, rgba(255,255,255,0) 100%);
-    border-top: 1px solid #f1f5f9;
-    margin-top: 0;
-    z-index: 10;
-  }
-
-  .static-bar {
     position: relative !important;
-    padding: 16px 0 0 0 !important;
+    padding: 0;
     background: transparent !important;
     border-top: none !important;
+    margin-top: 24px;
+    z-index: 1;
   }
 }
