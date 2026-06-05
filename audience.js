@@ -21,11 +21,11 @@ function navigateToSlide(slideId) {
   Object.values(slides).forEach(s => s.classList.remove("active"));
   slides[slideId].classList.add("active");
   
-  // Smoothly scrolls the window container right back to the top for a fresh view
+  // Smoothly scrolls the viewport right back to the top for a fresh card step view
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// STEP 1: MOOD TRANSITION
+// STEP 1: MOOD SELECTION TRANSITION (Targets explicitly using class selectors)
 document.querySelectorAll(".mood-btn").forEach(btn => {
   btn.onclick = () => {
     submissionData.mood = btn.getAttribute("data-mood");
@@ -33,7 +33,7 @@ document.querySelectorAll(".mood-btn").forEach(btn => {
   };
 });
 
-// STEP 2: PROFILE VERIFICATION
+// STEP 2: PROFILE LOGISTICS VERIFICATION
 const btnContactNext = document.getElementById("btn-contact-next");
 btnContactNext.onclick = () => {
   const nameVal = document.getElementById("user-name").value.trim();
@@ -42,9 +42,7 @@ btnContactNext.onclick = () => {
   const followUpVal = document.getElementById("follow-up-preference").value;
 
   if (!nameVal || !phoneVal || !emailVal) {
-    alert("Please fill out your name, contact number, and email address so we can coordinate support for 
-
-your request.");
+    alert("Please fill out your name, contact number, and email address so we can coordinate support for your request.");
     return;
   }
 
@@ -56,7 +54,7 @@ your request.");
   navigateToSlide(3);
 };
 
-// STEP 3: DATA TRANSMISSION
+// STEP 3: DATA TRANSMISSION LAYER
 const btnSubmit = document.getElementById("btn-submit-prayer");
 const prayerTextArea = document.getElementById("prayer-text");
 const followUpNoticeEl = document.getElementById("follow-up-notice");
@@ -93,8 +91,6 @@ btnSubmit.onclick = async () => {
     console.error("Database connection runtime exception:", err);
     alert("Unable to reach the server. Please check your network connection and try again.");
     btnSubmit.disabled = false;
-    btnSubmit.innerHTML = `<span>Submit Here</span><img class="btn-emoji-animated" 
-
-src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" alt="Sparkles">`;
+    btnSubmit.innerHTML = `<span>Submit Here</span><img class="btn-emoji-animated" src="https://fonts.gstatic.com/s/e/notoemoji/latest/2728/512.webp" alt="Sparkles">`;
   }
 };
